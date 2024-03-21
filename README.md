@@ -21,7 +21,7 @@ Social Authentication: Django Social Auth (Optional)
 
 Installation and Usage:
 
-Clone the repository: git clone https://github.com/syam2400/gym-management-application.git
+Clone the repository: git clone https://github.com/LuminarHub/gym_managemeent_pure_django.git
 Install dependencies (refer to requirements.txt for specific packages).
 Configure database settings in Django settings file.
 Run database migrations: python manage.py migrate

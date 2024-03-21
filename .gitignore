@@ -1,0 +1,4 @@
+gym-venv/
+*.sqlite3
+.env
+

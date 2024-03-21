@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+{% csrf_token %}
+
+<br>
+<div  class="col-md-12" style="margin-top: 100px;height: 200px;display: flex;justify-content: center;align-items: center;">
+    <button id="rzp-button1" type="submit" style="color: red;font-size: 50px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+        Pay with Razorpay</button>
+</div>
+
+<!-- <a id="rzp-button1" ><h1 style="color: aliceblue;">Pay with Razorpay</h1></a> -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    var options = {
+        "key": "{{data.key}}", // Enter the Key ID generated from the Dashboard
+        "amount": "{{data.amount}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "Ashion",
+        "description": "Test Transaction",
+        "image": "https://example.com/your_logo",
+        "order_id": "{{data.id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "callback_url": "http://127.0.0.1:8000/gym-students/payment-success/",
+        "prefill": {
+            "name": "Syam",
+            "email": "gaurav.kumar@example.com",
+            "contact": "9000090000"
+        },
+        "notes": {
+            "address": "Razorpay Corporate Office"
+        },
+        "theme": {
+            "color": "#3399cc"
+        }
+    };
+    var rzp1 = new Razorpay(options);
+    document.getElementById('rzp-button1').onclick = function (e) {
+        rzp1.open();
+        e.preventDefault();
+    }
+</script>
+
+{% endblock %}
